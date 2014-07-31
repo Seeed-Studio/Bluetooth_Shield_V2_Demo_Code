@@ -95,21 +95,22 @@ void setupBlueToothConnection()
 	blueToothSerial.print("AT");
 	delay(400); 
 	
+	blueToothSerial.print("AT+DEFAULT");             // Restore all setup value to factory setup
+	delay(2000); 
+	
 	blueToothSerial.print("AT+NAMESeeedMaster");    // set the bluetooth name as "SeeedMaster" ,the length of bluetooth name must less than 12 characters.
 	delay(400);
 	
 	blueToothSerial.print("AT+ROLEM");             // set the bluetooth work in slave mode
 	delay(400); 
 	
-    blueToothSerial.print("AT+PIN0000");             // set the pair code to connect 
-	delay(400);
 	
-	blueToothSerial.print("AT+AUTH1");             // Auto-connection should be forbidden here
+	blueToothSerial.print("AT+AUTH1");            
     delay(400);    
 	
-	blueToothSerial.print("AT+SEARCH");             // Auto-search
-    delay(400);  
-
+	blueToothSerial.print("AT+CLEAR");             // Clear connected device mac address
+    delay(400);   
+	
     blueToothSerial.flush();
 	
 	
